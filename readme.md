@@ -1,4 +1,4 @@
-# google-play-search [![Build Status](https://secure.travis-ci.org/mikkolehtinen/google-play-search.png?branch=master)](http://travis-ci.org/mikkolehtinen/google-play-search)
+# google-play-search [![Build Status](https://travis-ci.org/mikkolehtinen/google-play-search.png)](https://travis-ci.org/mikkolehtinen/google-play-search)
 
 > Crawls Google Play store for app details
 
