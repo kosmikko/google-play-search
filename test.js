@@ -9,4 +9,12 @@ describe('Parsing tests', function () {
       done();
     });
   });
+
+  it('should read additional properties', function(done) {
+    search.fetch('bbc.mobile.news.ww', function(err, res) {
+      assert(res.softwareVersion);
+      assert(res.contentRating);
+      done();
+    });
+  });
 });

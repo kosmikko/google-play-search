@@ -19,6 +19,13 @@ googlePlaySearch.fetch('com.google.android.music', function(err, gameData) {
 });
 ```
 
+## Run tests
+
+```
+npm test
+```
+
+
 ## License
 
 MIT © [Mikko Lehtinen](http://twitter.com/kosmikko)
