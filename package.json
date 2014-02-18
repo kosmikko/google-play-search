@@ -1,0 +1,36 @@
+{
+  "name": "google-play-search",
+  "version": "0.0.1",
+  "description": "Crawls Google Play store apps website, returning results as JSON",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha -R spec"
+  },
+  "author": {
+    "name": "Mikko Lehtinen",
+    "email": "mikko@applifier.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mikkolehtinen/google-play-search"
+  },
+  "keywords": [
+    "googleplay",
+    "search",
+    "crawler",
+    "play",
+    "store"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "whacko": "~0.12.10",
+    "request": "~2.33.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.17.1"
+  },
+  "readmeFilename": "readme.md",
+  "bugs": {
+    "url": "https://github.com/mikkolehtinen/google-play-search/issues"
+  }
+}
