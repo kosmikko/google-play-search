@@ -37,6 +37,27 @@ var parse = function(playId, url, config, callback) {
         : match.text().trim();
       result[selector.property] = val;
     });
+    parseSimilarApps($, result);
     callback(null, result);
   });
 };
+
+var parseSimilarApps = function($, result) {
+    var cards = $('.recommendation .rec-cluster');
+    var similarApps = [];
+    for (var i=0; i < cards.length; ++i) {
+        if (cards.find('h1').first().text() === 'Similar') {
+            cards.find('.card-content').each(function(i, elem){
+                var docId = $(elem).attr('data-docid');
+                if (docId && docId.length > 0) {
+                    similarApps.push(docId);
+                }
+            });
+        }
+    }
+
+    if (similarApps && similarApps.length > 0) {
+        result['similarApps'] = similarApps;
+    }
+};
+
