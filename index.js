@@ -16,6 +16,38 @@ exports.request = function(url, callback) {
   _request(url, callback);
 };
 
+exports.search = function(query, callback){
+    _search('q',function(){console.log('woo')})
+}
+
+
+var _search = function(q, callback){
+    _request('http://play.google.com/store/search?q=' + q + '&hl=en',function(error, response, body){
+        var results = [];
+        var $ = parser.load(body);
+        var cards = $('.card.apps').each(function(index,element){
+            
+            var $el = $(element);
+
+            var id = $el.attr('data-docid');
+            
+            var title = $el.find('.title').text().trim();
+            var author = $el.find('a.subtitle').text().trim();
+            var image = $el.find('img.cover-image').attr('src');
+
+            results.push({
+                id: id,
+                title: title,
+                author: author,
+                image:image
+            });
+        });
+
+        return results;
+        
+    });
+}
+
 var parse = function(playId, url, config, callback) {
   var result = {
     webUrl: url,
