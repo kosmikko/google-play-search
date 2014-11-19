@@ -1,6 +1,6 @@
 {
   "name": "google-play-search",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Crawls Google Play store apps website, returning results as JSON",
   "main": "index.js",
   "scripts": {
