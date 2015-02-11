@@ -40,6 +40,11 @@ module.exports = {
     {
       selector: '.meta-info .content[itemprop=contentRating]',
       property: 'contentRating'
+    },
+    {
+      selector: 'span[itemprop=offers] meta[itemprop=price]',
+      attr: 'content',
+      property: 'price'
     }
   ]
 };
