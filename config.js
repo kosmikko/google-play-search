@@ -1,5 +1,6 @@
 module.exports = {
   url: 'https://play.google.com/store/apps/details?id=%s&hl=%s',
+  topAppsUrl: 'https://play.google.com/store/apps%s?authuser=0',
   mainSelector: '',
   selectors: [
     {
