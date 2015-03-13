@@ -20,8 +20,8 @@ exports.request = function(url, callback) {
   _request(url, callback);
 };
 
-exports.search = function(query, callback){
-    _search(query,callback)
+exports.search = function(query, callback) {
+    search(query, callback);
 };
 
 exports.topApps = function(category, collection, limit, callback) {
@@ -42,8 +42,7 @@ exports.topApps = function(category, collection, limit, callback) {
 
     function _resultsHandler(error, results) {
         if (error) {
-            callback(err, null);
-            return;
+            return callback(err, null);
         }
 
         finalResults = finalResults.concat(results);
@@ -68,39 +67,6 @@ exports.topApps = function(category, collection, limit, callback) {
 
     chunkTopApps(currentStart, maxNum, url, _resultsHandler);
 };
-
-var _search = function(q, callback){
-    _request('http://play.google.com/store/search?q=' + q + '&hl=en',function(error, response, body){
-
-        if(error){
-          callback(err, null);
-          return;
-        }
-        var results = [];
-        var $ = parser.load(body);
-        var cards = $('.card.apps').each(function(index,element){
-
-            var $el = $(element);
-
-            var id = $el.attr('data-docid');
-
-            var title = $el.find('.title').text().trim();
-            var author = $el.find('a.subtitle').text().trim();
-            var image = $el.find('img.cover-image').attr('src');
-
-            results.push({
-                id: id,
-                title: title,
-                author: author,
-                image:image
-            });
-        });
-
-        // results = JSON.parse(results);
-        callback(error,results)
-        return;
-    });
-}
 
 var parse = function(playId, url, config, callback) {
   var result = {
@@ -190,6 +156,19 @@ function parseSearchResults(html) {
     });
 
     return results;
+}
+
+function search(q, callback){
+    var url = util.format(config.searchUrl, q);
+    _request(url, function(error, response, body) {
+
+        if (error) {
+            return callback(err, null);
+        }
+
+        var results = parseSearchResults(body);
+        return callback(error, results);
+    });
 }
 
 function validateCategory(category) {
