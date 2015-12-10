@@ -1,5 +1,7 @@
 module.exports = {
   url: 'https://play.google.com/store/apps/details?id=%s&hl=%s',
+  topAppsUrl: 'https://play.google.com/store/apps%s?authuser=0',
+  searchUrl: 'http://play.google.com/store/search?q=%s&hl=en',
   mainSelector: '',
   selectors: [
     {
@@ -40,6 +42,11 @@ module.exports = {
     {
       selector: '.meta-info .content[itemprop=contentRating]',
       property: 'contentRating'
+    },
+    {
+      selector: 'span[itemprop=offers] meta[itemprop=price]',
+      attr: 'content',
+      property: 'price'
     }
   ]
 };
