@@ -87,6 +87,13 @@ var parse = function(playId, url, config, callback) {
       var val = selector.attr
         ? match.attr(selector.attr)
         : match.text().trim();
+
+      if(selector.property === 'categories' && match.attr && match.attr(selector.attr)){
+          var categoryURI = match.attr(selector.attr).href;
+          var arr = categoryURI.split("/");
+          val = arr.slice(-1)[0];
+      }
+
       result[selector.property] = val;
     });
     callback(null, result);
